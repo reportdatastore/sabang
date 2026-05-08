@@ -8,7 +8,7 @@ const reportsData = {
         { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', href: 'select_logbook.html', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
         { id: 'daily3', title: 'BRIEFING', icon: 'fa-users', href: 'https://example.com/briefing', detail: 'BRIEFING: Ringkasan arahan pagi, target harian, dan menu spesial hari ini.' },
         { id: 'daily4', title: 'TCMH', icon: 'fa-clipboard-list', href: 'https://example.com/tcmh', detail: 'TCMH (Team Customer Morning Huddle): Evaluasi layanan pelanggan dan keluhan.' },
-        { id: 'daily5', title: 'BINCARD', icon: 'fa-id-card', href: 'youtube.com', detail: 'BINCARD: Kartu inspeksi kebersihan dan kelayakan area dapur & ruang makan.' },
+        { id: 'daily5', title: 'BINCARD', icon: 'fa-id-card', href: 'select_bincard.html', detail: 'BINCARD: Kartu inspeksi kebersihan dan kelayakan area dapur & ruang makan.' },
         { id: 'daily6', title: 'MONITORING suhu', icon: 'fa-temperature-high', href: 'https://example.com/monitoring-suhu', detail: 'Monitoring Suhu: Pengecekan suhu kulkas, freezer, dan ruang penyimpanan bahan baku.' }
     ],
     weekly: [
