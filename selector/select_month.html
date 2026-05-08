@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Dashboard Bulan | Warna Ikon Unik & Link Cepat</title>
+  <!-- Google Fonts & Font Awesome 6 (Gratis) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fe 0%, #eef2fc 100%);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Container utama dengan sentuhan modern & glassmorphism premium */
+    .dashboard {
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 2.5rem;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+
+    /* Header minimalis modern - tanpa fitur pilihan */
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+      padding-bottom: 1rem;
+    }
+
+    .title-section h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #1F2B48, #2C3E66, #1E3A5F);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .title-section h1 i {
+      background: linear-gradient(145deg, #4a6fa5, #1f3a5f);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 1.8rem;
+    }
+
+    .subtitle {
+      color: #4a627a;
+      font-weight: 500;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      letter-spacing: 0.2px;
+      opacity: 0.8;
+    }
+
+    .year-badge {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 0.45rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #1f2b48;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255,255,245,0.8);
+    }
+
+    /* GRID MODERN: rapi, responsif, interaksi tinggi */
+    .months-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.6rem;
+      margin-top: 1.2rem;
+    }
+
+    /* Kartu bulan — desain bersih, hanya icon + nama bulan */
+    .month-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1.8rem 1rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.08);
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Efek glassmorphism tambahan saat hover */
+    .month-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,245,0.4), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+      border-radius: 2rem;
+    }
+
+    .month-card:hover::after {
+      opacity: 1;
+    }
+
+    .month-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 28px 36px -16px rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 245, 0.9);
+    }
+
+    /* Active effect sentuhan (untuk umpan balik klik) tidak merusak UX */
+    .month-card:active {
+      transform: scale(0.98);
+      transition: 0.05s linear;
+    }
+
+    /* Area icon - ukuran besar dan warna berbeda tiap bulan */
+    .month-icon {
+      font-size: 3.2rem;
+      margin-bottom: 1rem;
+      transition: transform 0.2s ease, filter 0.2s;
+      display: inline-block;
+    }
+
+    .month-card:hover .month-icon {
+      transform: scale(1.07) translateY(-3px);
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1));
+    }
+
+    /* Nama bulan tebal & modern, tidak ada deskripsi */
+    .month-name {
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: -0.3px;
+      color: #1a2c44;
+      margin-top: 0.5rem;
+      background: none;
+      transition: all 0.2s;
+    }
+
+    /* Footer minimalis */
+    .footer-note {
+      text-align: center;
+      margin-top: 2.8rem;
+      font-size: 0.72rem;
+      color: #6d85aa;
+      font-weight: 500;
+      border-top: 1px solid rgba(255,255,255,0.6);
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* Responsif mobile */
+    @media (max-width: 680px) {
+      body {
+        padding: 1rem;
+      }
+      .dashboard {
+        padding: 1.2rem;
+      }
+      .months-grid {
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      .month-name {
+        font-size: 1.1rem;
+      }
+      .month-icon {
+        font-size: 2.4rem;
+      }
+      .title-section h1 {
+        font-size: 1.45rem;
+      }
+      .year-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 1rem;
+      }
+    }
+
+    /* Animasi fade-in yang elegan */
+    @keyframes gentleRise {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .month-card {
+      animation: gentleRise 0.45s cubic-bezier(0.2, 0.8, 0.3, 1) backwards;
+    }
+
+    /* Efek Stagger biar modern */
+    .month-card:nth-child(1) { animation-delay: 0.02s; }
+    .month-card:nth-child(2) { animation-delay: 0.05s; }
+    .month-card:nth-child(3) { animation-delay: 0.08s; }
+    .month-card:nth-child(4) { animation-delay: 0.11s; }
+    .month-card:nth-child(5) { animation-delay: 0.14s; }
+    .month-card:nth-child(6) { animation-delay: 0.17s; }
+    .month-card:nth-child(7) { animation-delay: 0.20s; }
+    .month-card:nth-child(8) { animation-delay: 0.23s; }
+    .month-card:nth-child(9) { animation-delay: 0.26s; }
+    .month-card:nth-child(10) { animation-delay: 0.29s; }
+    .month-card:nth-child(11) { animation-delay: 0.32s; }
+    .month-card:nth-child(12) { animation-delay: 0.35s; }
+
+    /* Hapus outline tap pada safari */
+    .month-card:focus-visible {
+      outline: 2px solid #3b5c9e;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+<div class="dashboard">
+  <div class="dashboard-header">
+    <div class="title-section">
+      <h1>
+        <i class="fas fa-calendar-week"></i> 
+        Pilihan Bulan
+      </h1>
+      <div class="subtitle">
+        <i class="fas fa-palette"></i> Ikon unik berwarna · Klik untuk buka tautan
+      </div>
+    </div>
+    <div class="year-badge">
+      <i class="fas fa-globe"></i> 2025
+      <i class="fas fa-arrow-right-long" style="font-size: 0.7rem;"></i>
+    </div>
+  </div>
+
+  <!-- GRID 12 BULAN : hanya icon (dengan warna berbeda) + nama bulan -->
+  <div class="months-grid" id="monthsGrid"></div>
+  
+  <div class="footer-note">
+    <i class="fas fa-link"></i> Setiap ikon bulan memiliki warna unik & membuka link baru
+    <i class="fas fa-meteor" style="opacity:0.7"></i>
+  </div>
+</div>
+
+<script>
+  // Data setiap bulan: nama, url tujuan (contoh link menarik sesuai tema bulan), 
+  // serta warna icon yang BERBEDA untuk setiap bulan (gradasi solid modern)
+  const monthsData = [
+    { 
+      name: "Januari", 
+      url: "https://en.wikipedia.org/wiki/January", 
+      iconClass: "fas fa-snowflake",
+      iconColor: "#4d9de0"   // biru es dingin
+    },
+    { 
+      name: "Februari", 
+      url: "https://en.wikipedia.org/wiki/February", 
+      iconClass: "fas fa-heart",
+      iconColor: "#e84393"   // pink Valentine
+    },
+    { 
+      name: "Maret", 
+      url: "https://en.wikipedia.org/wiki/March", 
+      iconClass: "fas fa-seedling",
+      iconColor: "#6ab04c"   // hijau segar musim semi
+    },
+    { 
+      name: "April", 
+      url: "https://en.wikipedia.org/wiki/April", 
+      iconClass: "fas fa-cloud-rain",
+      iconColor: "#45aaf2"   // biru hujan
+    },
+    { 
+      name: "Mei", 
+      url: "https://en.wikipedia.org/wiki/May", 
+      iconClass: "fas fa-leaf",
+      iconColor: "#2ecc71"   // hijau daun tropis
+    },
+    { 
+      name: "Juni", 
+      url: "https://en.wikipedia.org/wiki/June", 
+      iconClass: "fas fa-sun",
+      iconColor: "#f1c40f"   // kuning mentari terik
+    },
+    { 
+      name: "Juli", 
+      url: "https://en.wikipedia.org/wiki/July", 
+      iconClass: "fas fa-umbrella-beach",
+      iconColor: "#f39c12"   // oranye pantai
+    },
+    { 
+      name: "Agustus", 
+      url: "https://en.wikipedia.org/wiki/August", 
+      iconClass: "fas fa-tree",
+      iconColor: "#27ae60"   // hijau hutan
+    },
+    { 
+      name: "September", 
+      url: "https://en.wikipedia.org/wiki/September", 
+      iconClass: "fas fa-wind",
+      iconColor: "#3498db"   // biru angin sepoi
+    },
+    { 
+      name: "Oktober", 
+      url: "https://en.wikipedia.org/wiki/October", 
+      iconClass: "fas fa-candy-cane",
+      iconColor: "#e67e22"   // jingga halloween
+    },
+    { 
+      name: "November", 
+      url: "https://en.wikipedia.org/wiki/November", 
+      iconClass: "fas fa-cloud-moon",
+      iconColor: "#9b59b6"   // ungu senja kabut
+    },
+    { 
+      name: "Desember", 
+      url: "https://en.wikipedia.org/wiki/December", 
+      iconClass: "fas fa-gift",
+      iconColor: "#e74c3c"   // merah hadiah natal
+    }
+  ];
+
+  /**
+   * Fungsi untuk render grid bulan tanpa keterangan, hanya icon + nama
+   * Setiap icon diberi style warna inline yang berbeda-beda sesuai data.
+   * Setiap kartu adalah link yang membuka URL di tab baru (_blank)
+   */
+  function renderMonthsGrid() {
+    const gridContainer = document.getElementById('monthsGrid');
+    if (!gridContainer) return;
+    gridContainer.innerHTML = '';
+
+    monthsData.forEach((month) => {
+      // Buat elemen <a> sebagai kartu, karena interaksi klik langsung membuka link
+      const cardLink = document.createElement('a');
+      cardLink.className = 'month-card';
+      // Set target _blank untuk membuka di tab baru, juga rel keamanan
+      cardLink.href = month.url;
+      cardLink.target = '_blank';
+      cardLink.rel = 'noopener noreferrer';
+
+      // Inner struktur: hanya icon (dengan warna dinamis) + nama bulan
+      // Icon dibungkus div agar styling terpusat
+      cardLink.innerHTML = `
+        <div class="month-icon">
+          <i class="${month.iconClass}" style="color: ${month.iconColor}; transition: all 0.2s ease;"></i>
+        </div>
+        <div class="month-name">${month.name}</div>
+      `;
+
+      // Tambahkan efek hover tambahan untuk memperkuat warna icon saat hover (opsional, membuat warna lebih hidup)
+      // Kita bisa menambahkan event mouseover untuk mencerahkan warna? Tidak wajib, tapi untuk pengalaman lebih baik.
+      // Tetapi karena sudah ada efek transisi, kita bisa menambahkan sedikit efek shadow pada icon.
+      const iconElem = cardLink.querySelector('.month-icon i');
+      if (iconElem) {
+        cardLink.addEventListener('mouseenter', () => {
+          iconElem.style.filter = 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))';
+          iconElem.style.transform = 'scale(1.02)';
+        });
+        cardLink.addEventListener('mouseleave', () => {
+          iconElem.style.filter = '';
+          iconElem.style.transform = '';
+        });
+      }
+
+      gridContainer.appendChild(cardLink);
+    });
+  }
+
+  // Inisialisasi dashboard segera setelah DOM siap
+  document.addEventListener('DOMContentLoaded', () => {
+    renderMonthsGrid();
+    // Tambahan sentuhan: gaya modern untuk setiap kartu sudah mencakup pointer
+    // Tidak ada fitur bulan terpilih, tidak ada reset.
+  });
+</script>
+</body>
+</html>

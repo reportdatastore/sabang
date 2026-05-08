@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Dashboard - Laporan Hokben</title>
+    <!-- Google Fonts + Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Animasi -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- CSS External -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="dashboard-container">
+    <!-- Header dengan gif dan efek -->
+    <div class="header" data-aos="fade-down" data-aos-duration="600">
+        <div class="title-area">
+            <div class="gif-chef">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmlnNGNkZnF2cjdqeGZ0NzVmczF3cTl1YXNhYThjM3R4dWdycWcxcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3o7abB06u9bNzA8LC8/giphy.gif" alt="chef gif">
+            </div>
+            <h1>🍽️ RestoDash · Laporan Restoran</h1>
+        </div>
+        <div class="date-badge">
+            <i class="fas fa-calendar-alt"></i>
+            <span id="liveDate"></span>
+        </div>
+    </div>
+
+    <!-- Kategori Laporan (Daily, Weekly, Monthly, Insidental) -->
+    <div class="report-cards" data-aos="fade-up" data-aos-duration="700">
+        <div class="card-cat" data-type="daily" id="catDaily">
+            <i class="fas fa-sun daily-icon"></i>
+            <h3>Daily</h3>
+            <p>Laporan Harian</p>
+        </div>
+        <div class="card-cat" data-type="weekly" id="catWeekly">
+            <i class="fas fa-calendar-week weekly-icon"></i>
+            <h3>Weekly</h3>
+            <p>Laporan Mingguan</p>
+        </div>
+        <div class="card-cat" data-type="monthly" id="catMonthly">
+            <i class="fas fa-chart-line monthly-icon"></i>
+            <h3>Monthly</h3>
+            <p>Laporan Bulanan</p>
+        </div>
+        <div class="card-cat" data-type="insidental" id="catInsidental">
+            <i class="fas fa-exclamation-triangle insidental-icon"></i>
+            <h3>Insidental</h3>
+            <p>Laporan Khusus</p>
+        </div>
+    </div>
+
+    <!-- Panel utama laporan dengan GRID sederhana (Icon + Judul) -->
+    <div class="report-panel" data-aos="fade-up" data-aos-duration="800">
+        <div class="panel-header">
+            <h2 id="panelTitle"><i class="fas fa-chart-simple"></i> Daily</h2>
+            <span><i class="fas fa-utensils"></i> Pilih laporan untuk melihat detail</span>
+        </div>
+        
+        <!-- GRID sederhana: hanya icon dan judul -->
+        <div id="reportGridContainer" class="report-grid">
+            <!-- konten grid akan diisi javascript -->
+        </div>
+        
+        <!-- Area detail saat item diklik -->
+        <div id="detailArea" class="detail-area">
+            <div class="detail-placeholder">
+                <i class="fas fa-hand-pointer"></i> Klik salah satu laporan untuk melihat detail
+            </div>
+        </div>
+        
+        <div class="decor-gif">
+            <span><i class="fas fa-fire"></i> Fresh from kitchen </span>
+            <img src="https://media2.giphy.com/media/26gR2qH4EVJAwcpUc/giphy.gif?cid=790b7611qtn2fbgcye7cbafu2ec8xrwn9x200vpy6g8cxrqk&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="cooking gif">
+            <span>✨ selalu hangat ✨</span>
+        </div>
+    </div>
+    <div class="footer-note">
+        <i class="fas fa-chart-pie"></i> Dashboard laporan restoran | Klik laporan untuk melihat detail
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- JavaScript External -->
+<script src="script.js"></script>
+</body>
+</html>

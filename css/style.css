@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #f8f9fc 0%, #f0f2f8 100%);
+    min-height: 100vh;
+    padding: 30px 24px 50px;
+}
+
+/* background pattern halus */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/light-paper-fibers.png');
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Container utama */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header dengan gif & efek */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 40px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px);
+    padding: 18px 28px;
+    border-radius: 64px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.03), 0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.title-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.title-area h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #c0392b, #e67e22);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.gif-chef {
+    width: 60px;
+    height: 60px;
+    background: #fff3e0;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.gif-chef img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.gif-chef:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.date-badge {
+    background: white;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: 500;
+    color: #2c3e50;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-badge i {
+    color: #e67e22;
+    font-size: 1.2rem;
+}
+
+/* Kartu navigasi laporan (kategori) */
+.report-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    justify-content: center;
+    margin-bottom: 48px;
+}
+
+.card-cat {
+    flex: 1;
+    min-width: 160px;
+    background: white;
+    border-radius: 32px;
+    padding: 22px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 12px 26px -8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+.card-cat i {
+    font-size: 2.8rem;
+    margin-bottom: 14px;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.card-cat h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-cat p {
+    color: #5e6f8d;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.card-cat.active {
+    background: linear-gradient(145deg, #ffffff, #fef5e7);
+    border-left: 5px solid #e67e22;
+    box-shadow: 0 20px 30px -12px rgba(230,126,34,0.25);
+    transform: translateY(-6px);
+}
+
+.card-cat:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 32px -14px rgba(0, 0, 0, 0.15);
+}
+
+/* Warna icon per kategori */
+.daily-icon { color: #2c6e9e; }
+.weekly-icon { color: #27ae60; }
+.monthly-icon { color: #9b59b6; }
+.insidental-icon { color: #e67e22; }
+
+/* Panel laporan utama */
+.report-panel {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border-radius: 42px;
+    padding: 28px 30px;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s;
+    border: 1px solid rgba(255,255,240,0.8);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #ffd8b5;
+}
+
+.panel-header h2 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    background: linear-gradient(120deg, #c23616, #e67e22);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.panel-header span {
+    font-size: 0.9rem;
+    background: #f7f3e9;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-weight: 500;
+}
+
+/* ========== GRID SEDERHANA ========== */
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.grid-item {
+    background: white;
+    border-radius: 28px;
+    padding: 28px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0ede8;
+}
+
+.grid-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 28px -12px rgba(0, 0, 0, 0.15);
+    border-color: #ffcc99;
+    background: #fffdf9;
+}
+
+.grid-item.active-laporan {
+    background: linear-gradient(145deg, #fff5e8, #ffe8d4);
+    border: 2px solid #e67e22;
+    transform: scale(1.02);
+}
+
+.grid-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(145deg, #fff3e4, #ffe6d5);
+    border-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin: 0 auto 16px auto;
+    transition: 0.2s;
+}
+
+.grid-item:hover .grid-icon {
+    transform: scale(1.05);
+    background: #ffecd9;
+}
+
+.grid-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2d3e50;
+    margin-bottom: 6px;
+}
+
+/* Detail Area */
+.detail-area {
+    margin-top: 28px;
+    padding: 24px;
+    background: #fffef7;
+    border-radius: 32px;
+    border: 1px solid #ffe0bf;
+    min-height: 140px;
+}
+
+.detail-placeholder {
+    text-align: center;
+    color: #b87333;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+.detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.detail-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #c23616;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.detail-title i {
+    font-size: 1.8rem;
+}
+
+.detail-desc {
+    color: #4a5b6e;
+    line-height: 1.5;
+    padding-left: 12px;
+    border-left: 3px solid #e67e22;
+}
+
+.detail-meta {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #8e9aaf;
+}
+
+/* decor gif */
+.decor-gif {
+    margin-top: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    background: #fff7ef;
+    border-radius: 100px;
+    padding: 12px 24px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.decor-gif span {
+    font-weight: 500;
+    color: #b64926;
+}
+
+.decor-gif img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.footer-note {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.75rem;
+    color: #8e9aaf;
+}
+
+/* toast notifikasi */
+.toast-msg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #2c3e50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* responsive */
+@media (max-width: 700px) {
+    body {
+        padding: 20px 16px;
+    }
+    .header {
+        border-radius: 36px;
+        padding: 14px 20px;
+    }
+    .title-area h1 {
+        font-size: 1.3rem;
+    }
+    .report-panel {
+        padding: 20px;
+    }
+    .panel-header h2 {
+        font-size: 1.5rem;
+    }
+    .report-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 14px;
+    }
+    .grid-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+    }
+}
