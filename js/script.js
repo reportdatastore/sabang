@@ -5,7 +5,7 @@ AOS.init({ once: true, duration: 800 });
 const reportsData = {
     daily: [
         { id: 'daily1', title: 'Line bar', icon: 'fa-chart-line', href: 'https://example.com/line-bar-report', detail: 'Laporan Line Bar: Menampilkan grafik penjualan per jam, item terlaris, dan performa shift.' },
-        { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', href: 'Select_logbook.html', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
+        { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', href: 'select_logbook.html', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
         { id: 'daily3', title: 'BRIEFING', icon: 'fa-users', href: 'https://example.com/briefing', detail: 'BRIEFING: Ringkasan arahan pagi, target harian, dan menu spesial hari ini.' },
         { id: 'daily4', title: 'TCMH', icon: 'fa-clipboard-list', href: 'https://example.com/tcmh', detail: 'TCMH (Team Customer Morning Huddle): Evaluasi layanan pelanggan dan keluhan.' },
         { id: 'daily5', title: 'BINCARD', icon: 'fa-id-card', href: 'https://example.com/bincard', detail: 'BINCARD: Kartu inspeksi kebersihan dan kelayakan area dapur & ruang makan.' },
